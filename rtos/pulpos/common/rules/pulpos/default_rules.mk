@@ -12,6 +12,12 @@ ifdef VERBOSE
 override gapy_args += --config-opt=**/runner/verbose=true
 endif
 
+ifdef TRACE_FILE
+$(info Tracing enabled, traces will be saved to $(TRACE_FILE))
+TRACE_FILES = $(TRACE_FILE)
+override gapy_args += --trace=insn:$(TRACE_FILES) --trace-level=DEBUG --debug-mode
+endif
+
 CONFIG_BUILD_DIR=$(TARGET_BUILD_DIR)
 
 
